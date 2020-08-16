@@ -14,7 +14,7 @@
     <artifactId>mybatis-study2</artifactId>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>loading-config</module>
+        <module>hello-world</module>
     </modules>
     <packaging>pom</packaging>
 
