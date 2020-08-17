@@ -16,4 +16,6 @@ public interface UserService {
     User selectById(Integer id) ;
 
     User select4Login(String username, String password) ;
+
+    void queryFlux(Integer id) ;
 }

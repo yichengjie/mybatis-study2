@@ -45,6 +45,12 @@ public class UserServiceTest {
         log.info("----> {}", user);
     }
 
+    @Test
+    public void queryFlux(){
+        Integer id = 1 ;
+        userService.queryFlux(id);
+    }
+
 
     @Test
     public void getParamNames() throws NoSuchMethodException {
