@@ -13,6 +13,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * ClassName: UserServiceTest
@@ -51,6 +53,19 @@ public class UserServiceTest {
         userService.queryFlux(id);
     }
 
+    @Test
+    public void batchAdd(){
+        List<User> list = new ArrayList<>() ;
+        for (int i = 0 ; i < 10; i++){
+            User user = new User() ;
+            user.setUsername("yicj"+(i+1));
+            user.setPassword("123");
+            user.setRoles("ROLE_USER");
+            list.add(user);
+        }
+        userService.batchAdd(list);
+    }
+
 
     @Test
     public void getParamNames() throws NoSuchMethodException {
@@ -69,4 +84,5 @@ public class UserServiceTest {
             log.info("name : {}", name);
         }
     }
+
 }

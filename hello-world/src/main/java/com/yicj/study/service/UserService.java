@@ -2,6 +2,8 @@ package com.yicj.study.service;
 
 import com.yicj.study.entity.User;
 
+import java.util.List;
+
 /**
  * ClassName: UserService
  * Description: TODO(描述)
@@ -17,5 +19,15 @@ public interface UserService {
 
     User select4Login(String username, String password) ;
 
+    /**
+     * 流式查询（避免oom）
+     * @param id
+     */
     void queryFlux(Integer id) ;
+
+    /**
+     * 批量添加
+     * @param list
+     */
+    void batchAdd(List<User> list) ;
 }

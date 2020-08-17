@@ -14,4 +14,8 @@
         where u.username = #{username}
         and u.password = #{password}
     </select>
+
+    <insert id="insert" parameterType="User">
+        insert into user(username, password, roles) values (#{username}, #{password},#{roles})
+    </insert>
 </mapper>

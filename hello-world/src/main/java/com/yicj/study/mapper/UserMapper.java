@@ -18,4 +18,6 @@ public interface UserMapper {
     User selectById(Integer id) ;
 
     User select4Login(String username, String password) ;
+
+    void insert(User user) ;
 }
