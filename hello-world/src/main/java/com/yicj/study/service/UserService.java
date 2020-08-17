@@ -30,4 +30,10 @@ public interface UserService {
      * @param list
      */
     void batchAdd(List<User> list) ;
+
+    /**
+     * 批量添加：方式二
+     * @param list
+     */
+    void batchAdd2(List<User> list) ;
 }

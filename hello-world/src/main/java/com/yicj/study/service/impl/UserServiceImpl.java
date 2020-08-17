@@ -11,6 +11,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -74,6 +75,19 @@ public class UserServiceImpl implements UserService {
             session.rollback();
         }finally {
             session.close();
+        }
+    }
+
+
+    // 注意这里一定要有事务，否则将SqlSessionTemplate将每条一提交
+    @Transactional
+    @Override
+    public void batchAdd2(List<User> list) {
+        SqlSessionTemplate sqlSessionTemplate =
+                new SqlSessionTemplate(sqlSessionFactory, ExecutorType.BATCH) ;
+        UserMapper mapper = sqlSessionTemplate.getMapper(UserMapper.class);
+        for (User user: list){
+            mapper.insert(user);
         }
     }
 }
