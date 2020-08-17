@@ -33,14 +33,22 @@ public class UserServiceTest {
     @Test
     public void selectUserById(){
         Integer id = 1 ;
-        User user = userService.selectUserById(id);
+        User user = userService.selectById(id);
         System.out.println(user);
+    }
+
+    @Test
+    public void select4Login(){
+        String username ="yicj" ;
+        String password = "123" ;
+        User user = userService.select4Login(username, password);
+        log.info("----> {}", user);
     }
 
 
     @Test
     public void getParamNames() throws NoSuchMethodException {
-        Method method = UserMapper.class.getMethod("selectUserById", Integer.class);
+        Method method = UserMapper.class.getMethod("selectById", Integer.class);
         int paramIndex = 0 ;
         String pname = ParamNameUtil.getParamNames(method).get(paramIndex);
         log.info("pname : {}", pname);
@@ -48,7 +56,7 @@ public class UserServiceTest {
 
     @Test
     public void getParamNames2() throws NoSuchMethodException {
-        Method method = UserMapper.class.getMethod("selectUserById", Integer.class);
+        Method method = UserMapper.class.getMethod("selectById", Integer.class);
         Parameter[] parameters = method.getParameters();
         for (Parameter parameter: parameters){
             String name = parameter.getName();

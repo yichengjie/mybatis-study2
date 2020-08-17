@@ -13,5 +13,7 @@ import com.yicj.study.entity.User;
  */
 public interface UserService {
 
-    User selectUserById(Integer id) ;
+    User selectById(Integer id) ;
+
+    User select4Login(String username, String password) ;
 }
