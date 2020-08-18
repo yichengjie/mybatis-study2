@@ -27,6 +27,7 @@ import java.util.List;
  */
 @Slf4j
 @RunWith(SpringRunner.class)
+//SpringJUnit4ClassRunner
 @SpringBootTest(classes = Application.class)
 public class UserServiceTest {
     @Autowired
