@@ -38,7 +38,8 @@ public class HelloInterceptor implements Interceptor {
         String oldSql = boundSql.getSql();
         log.info("old: {}", oldSql);
         // 改变sql语句
-        BoundSql newBoundSql = new BoundSql(mappedStatement.getConfiguration(), oldSql + " and id = 1",
+        String newSql = transformSql(oldSql) ;
+        BoundSql newBoundSql = new BoundSql(mappedStatement.getConfiguration(), newSql,
                 boundSql.getParameterMappings(), boundSql.getParameterObject());
         MappedStatement newMs = copyFromMappedStatement(mappedStatement, new BoundSqlSqlSource(newBoundSql));
         invocation.getArgs()[0] = newMs;
@@ -86,5 +87,15 @@ public class HelloInterceptor implements Interceptor {
         public BoundSql getBoundSql(Object parameterObject) {
             return boundSql;
         }
+    }
+
+    /**
+     * 对原sql进行特殊处理
+     * @param originalSql
+     * @return
+     */
+    private String transformSql(String originalSql){
+        // TODO 处理原sql
+        return originalSql ;
     }
 }
