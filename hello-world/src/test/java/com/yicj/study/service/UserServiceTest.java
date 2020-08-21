@@ -48,6 +48,16 @@ public class UserServiceTest {
         log.info("----> {}", user);
     }
 
+
+    @Test
+    public void test1() throws NoSuchMethodException {
+        Method method = UserMapper.class.getMethod("select4Login", String.class, String.class);
+        Parameter[] parameters = method.getParameters();
+        for (Parameter p: parameters){
+            System.out.println(p.getName());
+        }
+    }
+
     @Test
     public void queryFlux(){
         Integer id = 1 ;
