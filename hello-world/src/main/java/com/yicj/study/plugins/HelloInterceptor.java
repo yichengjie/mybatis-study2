@@ -58,8 +58,10 @@ public class HelloInterceptor implements Interceptor {
 
     // 复制原始MappedStatement
     private MappedStatement copyFromMappedStatement(MappedStatement ms, SqlSource newSqlSource) {
-        MappedStatement.Builder builder = new MappedStatement.Builder(ms.getConfiguration(), ms.getId(), newSqlSource,
-                ms.getSqlCommandType());
+
+        MappedStatement.Builder builder = new MappedStatement.Builder(
+                ms.getConfiguration(), ms.getId(), newSqlSource, ms.getSqlCommandType());
+
         builder.resource(ms.getResource());
         builder.fetchSize(ms.getFetchSize());
         builder.statementType(ms.getStatementType());
