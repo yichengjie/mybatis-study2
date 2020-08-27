@@ -15,6 +15,8 @@ import java.util.List;
  */
 public interface UserService {
 
+    int insert(User user) ;
+
     User selectById(Integer id) ;
 
     User select4Login(String username, String password) ;

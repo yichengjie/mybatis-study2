@@ -36,9 +36,16 @@ public class UserServiceImpl implements UserService {
     private final SqlSessionFactory sqlSessionFactory ;
 
     @Override
+    public int insert(User user) {
+        return userMapper.insert(user);
+    }
+
+    @Override
     public User selectById(Integer id) {
         return userMapper.selectById(id);
     }
+
+
 
     @Override
     public User select4Login(String username, String password) {
@@ -64,6 +71,7 @@ public class UserServiceImpl implements UserService {
         try {
             for (int i = 0 ; i < list.size() ; i++){
                 mapper.insert(list.get(i));
+                //this.insert(list.get(i)) ;
                 if( (i == list.size() -1) || (i %100 ==0 && i != 0)){
                     // 手动每100个执行一次提交，提交后无法回滚
                     session.commit();

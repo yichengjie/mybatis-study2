@@ -19,5 +19,5 @@ public interface UserMapper {
 
     User select4Login(String username, String password) ;
 
-    void insert(User user) ;
+    int insert(User user) ;
 }
